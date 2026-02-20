@@ -25,5 +25,18 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UPROPERTY(EditAnywhere)
-	FVector MoveDirection = FVector(0, 0, 0);
+	FVector MoveOffset;
+
+	UPROPERTY(EditAnywhere)
+	float MoveTime = 4.0f;
+
+	UPROPERTY(EditAnywhere)
+	bool Open = false;
+
+	UPROPERTY(VisibleAnywhere)
+	bool ReachedTarget = false;
+
+	FVector TargetLocation;
+	FVector StartLocation;
+	float Speed;
 };
