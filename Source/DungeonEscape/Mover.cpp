@@ -18,9 +18,6 @@ UMover::UMover()
 void UMover::BeginPlay()
 {
 	Super::BeginPlay();
-
-	// ...
-	
 }
 
 
@@ -29,6 +26,10 @@ void UMover::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponent
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	FVector CurrentLocation = GetOwner()->GetActorLocation();
+
+	CurrentLocation = CurrentLocation + MoveDirection * DeltaTime;
+
+	GetOwner()->SetActorLocation(CurrentLocation);
 }
 
