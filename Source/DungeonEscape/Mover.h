@@ -31,7 +31,7 @@ public:
 	float MoveTime = 4.0f;
 
 	UPROPERTY(EditAnywhere)
-	bool Open = false;
+	bool bOpen = false;
 
 	UPROPERTY(VisibleAnywhere)
 	bool ReachedTarget = false;

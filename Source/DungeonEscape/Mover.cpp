@@ -30,7 +30,7 @@ void UMover::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponent
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	if (Open)
+	if (bOpen)
 	{
 		TargetLocation = StartLocation + MoveOffset;
 	}
