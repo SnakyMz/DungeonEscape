@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "TriggerComponent.h"
 #include "Lock.generated.h"
 
 UCLASS()
@@ -23,4 +24,12 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(VisibleAnywhere)
+	USceneComponent* RootComp;
+
+	UPROPERTY(VisibleAnywhere)
+	UTriggerComponent* TriggerComp;
+
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* KeyMesh;
 };

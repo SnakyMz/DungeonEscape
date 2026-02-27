@@ -9,6 +9,15 @@ ALock::ALock()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	RootComp = CreateDefaultSubobject<USceneComponent>(TEXT("RootComp"));
+	SetRootComponent(RootComp);
+
+	TriggerComp = CreateDefaultSubobject<UTriggerComponent>(TEXT("Trigger"));
+	TriggerComp->SetupAttachment(RootComp);
+
+	KeyMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SM_Mesh"));
+	KeyMesh->SetupAttachment(RootComp);
+
 	Tags.Add("Lock");
 }
 
