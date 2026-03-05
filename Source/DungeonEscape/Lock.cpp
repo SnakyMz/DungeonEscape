@@ -35,3 +35,14 @@ void ALock::Tick(float DeltaTime)
 
 }
 
+bool ALock::GetIsKeyPlaced()
+{
+	return bIsKeyPlaced;
+}
+
+void ALock::SetIsKeyPlaced(bool bNewIsKeyPlaced)
+{
+	bIsKeyPlaced = bNewIsKeyPlaced;
+	TriggerComp->Trigger(bIsKeyPlaced);
+	KeyMesh->SetVisibility(bIsKeyPlaced);
+}
