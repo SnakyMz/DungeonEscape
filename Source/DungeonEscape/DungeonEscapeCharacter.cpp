@@ -9,6 +9,8 @@
 #include "InputActionValue.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "DungeonEscape.h"
+#include "CollectableItem.h"
+#include "Lock.h"
 
 ADungeonEscapeCharacter::ADungeonEscapeCharacter()
 {
@@ -84,7 +86,23 @@ void ADungeonEscapeCharacter::Interact()
 	if (bHit)
 	{
 		AActor* HitActor = HitResult.GetActor();
-		UE_LOG(LogTemp, Display, TEXT("Hit Actor: %s"), *HitActor->GetActorNameOrLabel());
+		
+		if (HitActor->ActorHasTag("CollectableItem"))
+		{
+			ACollectableItem* CollectableItem = Cast<ACollectableItem>(HitActor);
+			if (CollectableItem)
+			{
+				UE_LOG(LogTemp, Display, TEXT("Hit Collectable Item: %s"), *CollectableItem->ItemName);
+			}
+		}
+		else if (HitActor->ActorHasTag("Lock"))
+		{
+			ALock* Lock = Cast<ALock>(HitActor);
+			if (Lock)
+			{
+				UE_LOG(LogTemp, Display, TEXT("Hit Lock: %s"), *Lock->KeyItemName);
+			}
+		}
 	}
 	else
 	{
