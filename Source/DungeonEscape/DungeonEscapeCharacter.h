@@ -32,6 +32,9 @@ class ADungeonEscapeCharacter : public ACharacter
 	UCameraComponent* FirstPersonCameraComponent;
 
 protected:
+	/* Interact Input Action */
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* InteractAction;
 
 	/** Jump Input Action */
 	UPROPERTY(EditAnywhere, Category ="Input")
@@ -90,5 +93,6 @@ public:
 	/** Returns first person camera component **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
+	void Interact();
 };
 
