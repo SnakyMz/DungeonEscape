@@ -71,7 +71,25 @@ void ADungeonEscapeCharacter::SetupPlayerInputComponent(UInputComponent* PlayerI
 
 void ADungeonEscapeCharacter::Interact()
 {
+	FVector Start = FirstPersonCameraComponent->GetComponentLocation();
+	FVector End = Start + (FirstPersonCameraComponent->GetForwardVector() * InteractRange);
+	FHitResult HitResult;
+	FCollisionShape InteractSphere = FCollisionShape::MakeSphere(InteractRadius);
 
+	DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 5.0f);
+	DrawDebugSphere(GetWorld(), End, InteractRadius, 12, FColor::Blue, false, 5.0f);
+
+	bool bHit = GetWorld()->SweepSingleByChannel(HitResult, Start, End, FQuat::Identity, ECC_GameTraceChannel2, InteractSphere);
+
+	if (bHit)
+	{
+		AActor* HitActor = HitResult.GetActor();
+		UE_LOG(LogTemp, Display, TEXT("Hit Actor: %s"), *HitActor->GetActorNameOrLabel());
+	}
+	else
+	{
+		UE_LOG(LogTemp, Display, TEXT("No Actor Hit"));
+	}
 }
 
 void ADungeonEscapeCharacter::MoveInput(const FInputActionValue& Value)

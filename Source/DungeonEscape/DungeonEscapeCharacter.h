@@ -94,5 +94,11 @@ public:
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
 	void Interact();
+
+	UPROPERTY(EditAnywhere)
+	float InteractRange = 300.0f;
+
+	UPROPERTY(EditAnywhere)
+	float InteractRadius = 30.0f;
 };
 
