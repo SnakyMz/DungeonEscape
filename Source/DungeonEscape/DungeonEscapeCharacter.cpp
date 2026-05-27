@@ -101,7 +101,10 @@ void ADungeonEscapeCharacter::Interact()
 			ALock* Lock = Cast<ALock>(HitActor);
 			if (Lock)
 			{
-				UE_LOG(LogTemp, Display, TEXT("Hit Lock: %s"), *Lock->KeyItemName);
+				if (!Lock->GetIsKeyPlaced() && Inventory.RemoveSingle(Lock->KeyItemName))
+				{
+					Lock->SetIsKeyPlaced(true);
+				}
 			}
 		}
 	}
