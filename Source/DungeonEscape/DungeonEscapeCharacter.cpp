@@ -107,8 +107,8 @@ void ADungeonEscapeCharacter::Interact()
 				}
 				else if (Lock->GetIsKeyPlaced())
 				{
-					Lock->SetIsKeyPlaced(false);
 					Inventory.Add(Lock->KeyItemName);
+					Lock->SetIsKeyPlaced(false);
 				}
 			}
 		}
